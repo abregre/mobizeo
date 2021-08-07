@@ -12,7 +12,7 @@ const ProductRoute = ({match}) => {
             .then(product => {
                 setProduct(product)
             })
-    }, [])
+    }, [match])
 
     return (
         <>
