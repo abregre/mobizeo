@@ -1,0 +1,8 @@
+{
+  "name": "mobizeo-mern",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/abregre/mobizeo-mern.git",
+  "author": "V.Paparidis <v.paparidis@gmail.com>",
+  "license": "MIT"
+}
