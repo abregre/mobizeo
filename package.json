@@ -1,8 +1,14 @@
 {
-  "name": "mobizeo-mern",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/abregre/mobizeo-mern.git",
-  "author": "V.Paparidis <v.paparidis@gmail.com>",
-  "license": "MIT"
+    "name": "mobizeo-mern",
+    "version": "1.0.0",
+    "main": "server.js",
+    "repository": "https://github.com/abregre/mobizeo-mern.git",
+    "author": "V.Paparidis <v.paparidis@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "node backend/server"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }

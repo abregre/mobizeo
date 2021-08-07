@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Card, Image, ListGroup, Button } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
 
-const ProductRoute = ({ match }) => {
-    const product = products.find(product => product._id === match.params.id)
+const ProductRoute = ({match}) => {
+    const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        fetch(`/api/products/${match.params.id}`)
+            .then(response => response.json())
+            .then(product => {
+                setProduct(product)
+            })
+    }, [])
+
     return (
         <>
             <Link to={'/'} className="btn btn-dark my-3">
