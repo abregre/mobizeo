@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
+import {listProducts} from '../store/actions/productActions'
 
 
 const HomeRoute = () => {
-    const [products, setProducts] = useState([])
+    const dispatch = useDispatch()
+    const productList = useSelector(state => state.productList)
+    const { loading, error, products } = productList
 
     useEffect(() => {
-        fetch('/api/products')
-            .then(response => response.json())
-            .then(products => {
-                setProducts(products)
-            })
-    }, [])
-
+        dispatch(listProducts())
+    }, [dispatch])
 
     return (
         <>
             <h1>Latest Products</h1>
+            { loading ? (
+            <h2>Loading...</h2>
+            ) : error ? (
+            <h2>Error!</h2>
+            ) : (
             <Row>
                 {products.map(product => (
                     <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
@@ -25,6 +29,8 @@ const HomeRoute = () => {
                     </Col>
                 ))}
             </Row>
+            )
+            }
         </>
     )
 }
